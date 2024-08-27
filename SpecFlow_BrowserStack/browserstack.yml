@@ -1,0 +1,18 @@
+userName: satyamsharma_Psn0MF
+accessKey: ZEgcbpUpsaghXqnh3y9n
+platforms:
+  - os: Windows
+    osVersion: 10
+    browserName: Chrome
+    browserVersion: latest
+  - os: OS X
+    osVersion: Ventura
+    browserName: Firefox
+    browserVersion: latest
+  - deviceName: Samsung Galaxy S22
+    osVersion: 12.0
+    browserName: chrome
+    deviceOrientation: portrait
+browserstackLocal: true
+buildName: browserstack-build-1
+projectName: TechChallenge
