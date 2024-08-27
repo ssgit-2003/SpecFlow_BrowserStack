@@ -18,7 +18,7 @@ namespace SpecFlowBrowserStack
 		public SampleTest()
 		{
 			_driver = BrowserStackSpecFlowTest.ThreadLocalDriver.Value;
-			wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
+			wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
 		}
 
         [Given(@"the user navigates to ""(.*)""")]
@@ -43,12 +43,12 @@ namespace SpecFlowBrowserStack
 
             userNameInput.SendKeys(username);
 			userNameInput.SendKeys(Keys.Enter);
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             //passwordInput.Click();
             passwordInput.SendKeys(password);
             passwordInput.SendKeys(Keys.ArrowDown);  // Moves to the first suggestion
             passwordInput.SendKeys(Keys.Enter);  // Selects the suggestion
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             loginButton.Click();
         }
 
@@ -56,7 +56,9 @@ namespace SpecFlowBrowserStack
         public void WhenTheUserFiltersTheProductViewToShowDevicesOnly(string productFilter)
 
         {
-            var filterElement = _driver.FindElement(By.XPath($"//span[@class='checkmark' and text()='{productFilter}']"));
+            string filter = $"//span[@class='checkmark' and text()='{productFilter}']";
+            var filterElement = _driver.FindElement(By.XPath(filter));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(filter)));
             filterElement.Click();
         }
 
